@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>معمای تو و من</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    .question {
+      margin: 30px 0;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      background: #222;
+      border: 1px solid #555;
+      color: #fff;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    #final-message {
+      font-size: 20px;
+      margin-top: 40px;
+      color: #0f0;
+      line-height: 2;
+    }
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🕵️‍♀️ عملیات معمایی عشق</h1>
+
+  <div class="question" id="q1">
+    <p>مرحله ۱: تو چه ماهی با هم آشنا شدیم؟</p>
+    <input type="text" id="a1">
+    <button onclick="checkAnswer(1, 'فروردین')">بررسی</button>
+  </div>
+
+  <div class="question hidden" id="q2">
+    <p>مرحله ۲: اولین پیامی که به من دادی چی بود؟</p>
+    <input type="text" id="a2">
+    <button onclick="checkAnswer(2, 'سلام')">بررسی</button>
+  </div>
+
+  <div class="question hidden" id="q3">
+    <p>مرحله ۳: اولین باری که گفتی دوستم داری، چندم بود؟</p>
+    <input type="text" id="a3">
+    <button onclick="checkMultiAnswer(3, ['13', '۱۳'])">بررسی</button>
+  </div>
+
+  <div class="question hidden" id="q4">
+    <p>مرحله ۴: روزی که دستبندمو پس دادی، چندشنبه بود؟</p>
+    <input type="text" id="a4">
+    <button onclick="checkAnswer(4, 'پنجشنبه')">بررسی</button>
+  </div>
+
+  <div class="question hidden" id="q5">
+    <p>مرحله ۵: دختر کوچولوی ناز من کیه؟</p>
+    <input type="text" id="a5">
+    <button onclick="checkAnswer(5, 'هانا')">بررسی</button>
+  </div>
+
+  <div id="final-message" class="hidden">
+    <p>میخوام بدونی دنیا رو با یه تار موت عوض نمیکنم 💛</p>
+    <p>میخوام بدونی هر لحظه هرجا باشم دارم بهت فکر میکنم، انگار یه قسمت از مغزم کلاً کارش شده فکر کردن به تو 🧠❤️</p>
+    <p>میخوام بدونی دوست داشتنت یه جوری تو قلبم ریشه کرده که مثل خون توی رگام جریان داری 🫀</p>
+    <p><strong>فقط بدون بی‌نهایت دوست دارم و خوشحالم که تو زندگیمی.</strong></p>
+  </div>
+
+  <audio controls autoplay loop>
+    <source src="https://dl.sndup.net/v9nb/Love%20Story%20-%20Piano%20Cover.mp3" type="audio/mpeg">
+    مرورگر شما از پخش خودکار موسیقی پشتیبانی نمی‌کند.
+  </audio>
+
+  <script>
+    function checkAnswer(qNum, correct) {
+      const answer = document.getElementById(`a${qNum}`).value.trim();
+      if (answer === correct) {
+        document.getElementById(`q${qNum}`).classList.add('hidden');
+        const next = document.getElementById(`q${qNum + 1}`);
+        if (next) {
+          next.classList.remove('hidden');
+        } else {
+          document.getElementById('final-message').classList.remove('hidden');
+        }
+      } else {
+        alert('جواب اشتباهه! دوباره تلاش کن 🕵️‍♂️');
+      }
+    }
+
+    function checkMultiAnswer(qNum, correctAnswers) {
+      const answer = document.getElementById(`a${qNum}`).value.trim();
+      if (correctAnswers.includes(answer)) {
+        document.getElementById(`q${qNum}`).classList.add('hidden');
+        const next = document.getElementById(`q${qNum + 1}`);
+        if (next) {
+          next.classList.remove('hidden');
+        } else {
+          document.getElementById('final-message').classList.remove('hidden');
+        }
+      } else {
+        alert('جواب اشتباهه! یه کم فکر کن 😜');
+      }
+    }
+  </script>
+</body>
+</html>
